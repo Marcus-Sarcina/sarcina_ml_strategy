@@ -42,7 +42,7 @@ Sarcina seeks to address several systemic problems in the labor market and in bu
 
 #### **Problem 3: *Hiring Risk***
 #### **Problem:**
-> Because workers do not properly "own" their human capital in the sense of their value as a contributor being losslessly portable between employer-customers, the labor market has fallen into a pattern where workers attach to a single employer for long periods of time. This puts workers in a condition of low-grade peonage where they are far more dependant on their employer then the employer is on them.
+> For workers to properly "own" their human capital, their value as a contributor should be losslessly portable between employer-customers. Lacking this facility, the labor market has fallen into a pattern where workers attach to a single employer for long periods of time. This puts workers in a condition of low-grade peonage where they are far more dependant on their employer then the employer is on them.
 
 > The two solutions to this condition which have previously been found are unionization and regulation. Both solutions serve to increase the administrative burden and business risk an employer faces when hiring a worker, creating a feedback loop where the labor market slows and employers engage in ever more elaborate practices to protect themselves from liability and maintain discipline over their workforce.
 
@@ -60,7 +60,7 @@ Sarcina seeks to address several systemic problems in the labor market and in bu
 
 > This means barriers to entry for a gig app developer are drastically reduced, since building on top of Sarcina provides payment integration, session management, transactional data persistence, user identity management, fraud detection, peer-to-peer networking, and infrastructure hosting at no cost or effort to the developer. All that remains for a developer to do is to analyse some particular job or business function and create the interface and default business rules which will effectively "gigify" it.
 
-> Workers meanwhile can use any Sarcina-based app with a single sign on and persistent identity, secure in the knowledge that they are accumulating experience and reputational credit which will enhance their employment prospects in the future.
+> Workers, meanwhile, may use any Sarcina-based app with a single sign on and persistent identity, secure in the knowledge that they are accumulating experience and reputational credit which will enhance their employment prospects in the future.
 
 #### **Problem 4: *Administrative Bloat***
 #### **Problem:**
@@ -68,7 +68,7 @@ Sarcina seeks to address several systemic problems in the labor market and in bu
 
 > In the second place, narrow job roles and the systematic underutilization of full-time workers described above mean that in order to conduct a certain business at a certain scale, an employer has to take on and manage a larger body of full-time workers than they can beneficially employ at any given moment. The "Span of Control" problem means that the layers of management necessary to coordinate an organization grows as a consequence of headcount, whether or not those employees are actively contributing to the value-generating processes of the business.
 
-> Companies in our economy are larger, more bloated, and less efficient than they ought to be in large part because the culture of full-time permanent employment imposes additional administrative and managerial overhead which is not implicit in those companies' domains or business models.
+> Companies in our economy are larger, more bloated, and less efficient than they ought to be in large part because the culture of full-time permanent employment imposes additional administrative and managerial overhead which is not inherent in those companies' domains or business models.
 #### **Solution:**
 > With a standardised, low-friction employment protocol like Sarcina, it will be possible to streamline companies according to their core business activities, with managers allocated funds to hire workers as needed on a minute-by-minute or task-by-task basis. While this will not increase a manager's attentional resources or span of control, it will be possible to maximise the useful output generated within that span. Furthermore, Sarcina automates many of the human resource management, payroll, and accounting functions for which companies currently maintain seperate support departments or pay for expensive SAAS solutions. Use of the Sarcina Registry to find and hire workers can reduce the latency from identifying a labor need to getting a qualified worker on-task from months to minutes.
 
@@ -92,23 +92,109 @@ There are at least three distinct ways to conceptualize the addressable market o
 ### *"Sarcina is a Property Registrar for Human Capital"*
 #### Addressable Market: **~$263 Trillion Assets Under Custody**
 * Because of the systemic issues described in the "problems" section above, we aren't accustomed to thinking about "Human Capital" as an actual asset class with a formal valuation. But if you concieve of the Sarcina Registry as a sort of banking system or stock exchange where human capital is registered to it's owners and labor values are determined by market exchange, then you can calculate the present value of all existing human capital based on it's expected future cash flows.
-> * A typical career lasts approximately 40 years from the end of formal education until the age of retirement, so the pool of all workers can be assumed to have an average of 20 years of remaining working life.
+> * A typical career lasts approximately 40 years from the end of formal education until the age of retirement, so the pool of all workers can be roughly estimated to have an average of 20 years of remaining working life.
 > * From [the same Fed data](https://fred.stlouisfed.org/series/BA06RC1A027NBEA) as before, we can see that our present cash flow to labor is ~$10T/year and that this has grown at an average annual rate of 9% from 1985 to 2021. From the [FRB website](https://www.frbdiscountwindow.org/en/PAges/Discount-Rates/Current-Discount-Rates.aspx) we can see a current discount rate of 5.25% (June, 2023).
-> * From these figures, a linear projection suggests that Total Wages in 20 years from our benchmark year of 2021 will be $49.9T with a discounted present value of $17.3T.
+> * From these figures, a linear projection suggests that Total Wages in 2041 (average retirement date of current workers / 20 years from our benchmark year of 2021) will be $49.9T with a discounted present value of $17.3T.
 * Based on the above assumptions, we can calculate the present value of existing human capital in the US to be $262,864,836,109,208.
 * **This measure is not intended to give a realistic estimate of Sarcina's potential growth**, but the fact that the value of human capital thus derived vastly exceeds all other asset classes in the US economy combined goes to underline the points made above about the severe economic miscalculations which are possible under the current regime of ambiguity around property rights in human capital.
 
-## Architecture, Security, and Privacy
-Sarcina has two primary products **The Sarcina Protocol and it's Reference Client** and **The Sarcina Registry**.
-
-
-
 ## Products, Customers, and Business Models:
+### **The Sarcina App**
+Sarcina's initial product, to be marketed to the public as "Sarcina" is best described as a peer-to-peer teleconferencing and chat app with a time-incremented payment layer. The organising analogy of Sarcina calls is that of the old 900-number system; the offer of services exists outside of the call and a customer is automatically charged a pre-disclosed rate per minute for time spent connected.
 
+The invitation to join a Sarcina call is an embeddable configuration file called a "**line**". The line file describes, in condensed, machine-readable form, the following information:
+* The public key of the issuer of the line, which serves as a user's anonymous identifier to the Sarcina ecosystem.
+* (optional) A link to the issuer's Sarcina Registry profile, once the Registry is in operation.
+* Details required to establish an encrypted peer-to-peer streaming connection to the issuer through Sarcina's anonymous, surveillance-hardened "phonebook" infrastructure.
+* (optional) A description of the purpose and services provided when connecting to the line.
+* A set of business rules governing connections to the line such as the price per minute or per message, restrictions on who can connect, hours of operation, and the datastreams included in the offer (audio, video, text, geolocation, file transfer, remote desktop, SSL, etc).
+* (optional) Any third-party certificates which endorse the service provider issuing the line.
+
+Line files are small, suitable for being attached to email, embedded in a website, or hosted in an etherpad or public git repository for distribution as a hyperlink. Any user with a copy of the Sarcina client can parse the line file to review the terms of the line before connecting. As such, a Sarcina line serves as an adhesion contract, requiring no further negotiation of terms once the users connect.
+
+Each user's Sarcina client is connected to the third-party cryptocurrency wallet of their choice, and a peer-to-peer micropayment channel in the background settles payment automatically as the call proceeds. Each user's client also enforces the terms of the call as described in the line file, ensuring that as long as the connection proceeds and neither user chooses to disconnect, that the services described in the line file are being provided to the satisfaction of the parties.
+
+All steps in the connection and call process are as anonymous and surveillance-resistant as possible with current technology. Centralized infrastructure is only involved for necessarily centralized functions such as translating user IDs to network addresses and providing a common network-wide exchange rate for supported cryptocurrencies. As such, Sarcina is highly resistant to surveillance or suppression and the Sarcina platform is incapable of restricting the use of the service by anyone with a computer and a copy of the client software.
+### Sarcina App Launch Strategy
+The Sarcina app will be marketed to three groups initially: Content creators and recognized experts, freelancers, and app developers.
+
+#### *Influencers/Content Creators*
+Marketing expenditure will focus on the first group, people whose time and attention are already in demand and who may be looking for a way to monetize their fame which is free of platform risk and lock-in. These are the most valuable possible users since they will be motivated to attract their followers and fans to Sarcina as part of their own monetization efforts, yeilding a disproportional payoff in network growth.
+
+Because Sarcina supports recurring subscriptions as well as hands-off dowloads or streaming, it works out-of-the-box as a replacement for existing monetization options like Patreon, OnlyFans, YouTube SuperChats, e-Book or other content sales, or subscription blogs.
+
+While dealing with cryptocurrency instead of cash imposes some friction and inconvenience and restricts the potential pool of customers, Sarcina offers a level of suppression resistance which cannot be matched by any platform connected to the conventional banking system no matter how ethical the platform operator may be. As such, it is expected Sarcina will be used as a secondary, premium, or "fallback" monetization option by early adopting influencers who are concerned about deplatforming risk.
+#### *Freelancers*
+Sarcina's landing page and documentation focuses on the non-famous freelancer earning their living through remote work using their software. In the long term, Sarcina sees freelancers along with white-label app developers as the core of its business.
+
+Because freelancers are a much larger and more dispersed population than influencers and because they are not usually in a position to dictate platform adoption to their customers, Sarcina markets passively to them through its website, blog, and general online brand rather than through ad buys or other cost-incurring campaigns. The hope is that with time, as the installed base of Sarcina clients grows from people consuming content or connecting to their favorite influencers, use of Sarcina to hire freelancers will become less frictional as the software is more familliar to the public.
+#### *Whitelabel App Developers*
+As mentioned above, the Sarcina App is composed of two parts:
+1. The conventional UI layer
+1. The compiled Sarcina Engine
+
+All network, security, payment, file access, call management, and media handling functions are implemented within the engine, which exposes a local API over which any number of alternative UI layers may be wrapped.
+
+Third party developers can construct any number of "gig apps" as re-skins of the internal API with customized business rules and defaults, mixing in external services or resources to a user workflow tailored to their application. In this model, the whitelabel developer can use the certificate function of the Sarcina Protocol to embed an additional transaction fee for themselves when users connect using their version of the Sarcina client.
+
+Third-party developers can also build or import various kinds of business software as extensions to a modified Sarcina UI. To monetize this approach, a developer might use Sarcina's automated subscription functionality to obtain payment for the use to their enhancements.
+
+As is the case with end-users, the app is designed to make it structurally impossible for the Sarcina organization to suppress or gatekeep access by third-party developers.
+
+Marketing efforts targeted at third party developers will be slower and more deliberate and hands-on. A developer guide will be released as part of the initial whitepaper, and anyone and everyone is encouraged to hack on the non-engine portion of the client software. However, members of the core Sarcina development team will only be making themselves available to skilled and serious teams who they believe will produce high-quality products.
+### **The Sarcina Registry**
+Sarcina's second product will be the Sarcina Registry, an information service where users can opt-in to have their aggregate past performance, imputed skills, and trustworthiness displayed.
+
+The Sarcina Registry will be like LinkedIn, except statistically valid.
+
+Users of Sarcina do not have to register with the Sarcina Registry (in fact, they do not have to register with Sarcina at all), but if they opt to do so, they will be able to decrypt and retrieve their own validated transaction history on the network and have their imputed "charachter sheet" displayed publically. This will allow potential employers to find them through a granular search function and contact them through whichever public lines they choose to publish on their registry profile. It will also serve as an indellable online resume with a high degree of trustworthiness and verification behind it.
+
+Whether users choose to join the Registry or not, the transaction records from which registry profiles are imputed are stripped of all identifying information at the point of reciept and so the Sarcina organization will not be capable of unmasking, excluding, or modifying transaction records of anonymous users (If a user chooses to put e.g. legal name or physical location on their public Registry profile, that is on them).
+#### *Registry Launch*
+Because the goal of the Registry is to provide valid and trustworthy assessments of worker's skills and trustworthiness, the models which support this will not be functional until there is a sufficiently large dataset of Sarcina transaction records. As a consequence, the Sarcina Registry will not be released until the Sarcina App has achieved sufficient market penetration and transaction volume to provide this data.
+#### *Registry Business Model*
+Revenues from the Sarcina registry will come from increased transaction volume on the app and thus increased fees and also from paid encoding services. An encoding service is one where a user submits off-platform data such as diplomas or work history or pays for third-party screenings such as standardized test scores, drug screenings, or criminal background checks to be reported to the encoding service provider. 
+
+Encoding services will be provided by third-party bonded validation partners trusted by the Sarcina organization, since Sarcina itself does not wish to ever collect PII or real-world metadata that might be used to unmask pseudonymous users. Once validated, these records will be dis-aggregated into the same skills/attributes model Sarcina uses to represent on-platform performance.
+### **Competitive Advantage**
+At launch, Sarcina has several charactheristics which differentiate it from what a conventional "tech company" or "startup" is likely to offer. All of these follow from the Sarcina organization being a small team of mission-driven activists:
+
+The first is extremely low transaction fees. Sarcina as a platform takes only a 1% transaction fee which, when using a low-cost cryptocurrency option such as BTC via Lightning Network, means a cost to the service provider of less than 1.2% of the transacted value. This is less than the credit card processing fees payed by any credit card based product and far less than the fees a company would have to charge to support a paid development team, much less a "growing startup with a great company culture".
+
+The Sarcina Project is committed to privacy, pseudonymity, and permissionless access in the labor market to a degree which would be seen as too risky by most investors or public companies.
+
+The architecture of Sarcina optimizes for the autonomy of the user and the user's control of their data to a degree which sacrifices much of the value and revenue potential platform operators have grown to expect. Any commercial competitor who attempts to replicate Sarcina's functionality should be assumed to be engaging in some level of surveillance, suppression, or data brokerage unless proven otherwise.
+
+The Sarcina organization intends to remain small and to maintain the core infrastructure and client engine as a basic economic utility on close to a break-even basis. Non-central functions such as developer/integrator training, user support, and encoding services will be allocated to seperate trusted organizations.
+
+Most revenues in excess of operations costs and developer or marketing salaries will be reinvested into marketing campaigns, grants to whitelabel Sarcina startups, or reduced fees. Sarcina measures it's success as a project not by profits or equity valuation but by the fraction of the labor market where norms of worker sovreignty, permissionless access, and pseudonymity reign. 
+
+## Architecture, Security, and Privacy
+A brief walkthrough of the Sarcina architecture to highlight it's security and privacy features and explain the character of the data which will be available to the Sarcina Analytic Environment: 
+
+**The Sarcina App Front End**
+
+The UI layer with which the user interacts is not itself trusted and it is this layer where modding and re-skinning are encouraged. The lower "engine" layer contains a limited ammount of UI code so that it can "burst through" for security critical interactions such as authorizing payments.
+
+**The Sarcina Engine**
+
+The Sarcina Engine is a set of local services which implement the network, transaction management, key management, and rules enforcement functions whihc allow connections via the Sarcina Protocol. It is written in Rust and compiled to WASM and is expected to be distributed directly from a source certified the the Sarcina organization. It is important that the user trusts their local installation of the Sarcina Engine since it is at this layer that their funds and identity are secured and persisted and it is the engine which enforces the user's rights according to the terms of any line they connect to.
+
+In the reference client, only the engine connects to the internet. The engine makes all necessary connections to Sarcina's support services and holds the various peer-to-peer streams which constitute a Sarcina call. The engine also manages and persists user keys and trusted data such as copies of issued lines. The engine holds a WalletConnect connection to whichever local cryptocurrency wallet the user designates during setup.
+
+**Sarcina Core Support Services**
+
+
+
+**The Sarcina Analytic Environment**
+
+
+
+**The Sarcina Registry**.
 
 
 
 ## Machine Learning Use Cases for the Sarcina Analytic Environment
 
 
-
+## State of Development
