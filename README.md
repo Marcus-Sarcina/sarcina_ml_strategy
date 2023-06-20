@@ -274,7 +274,7 @@ The Sarcina Registry will be a separate, non-immutable IC-based application wher
 	1. Confirmed details of education, certification, or work experience
 
 ###  6.2. <a name='Generalapproach'></a>General approach
-Analysis of Sarcina's records will lean heavily on both conventional and machine learning approached to graph analysis of the relations between users. The aim will be to bootstrap meaningful attributes and taxonomies of activity from commonalities in patterns of communications, building off the seed of user provided data such as reported occupations and reported quality of service.
+Analysis of Sarcina's records will lean heavily on both conventional and machine learning approaches to graph analysis of the relations between users. The aim will be to bootstrap meaningful attributes and taxonomies of activity from commonalities in patterns of communications, building off the seed of user provided data such as reported occupations and reported quality of service.
 
 Both supervised and unsupervised learning approaches will have a role to play in extracting the true variables and their relationships from this combination of attested but unreliable human-labeled structured data and unlabeled graph topology.
 
