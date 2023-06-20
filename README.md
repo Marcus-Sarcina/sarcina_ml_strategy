@@ -14,7 +14,14 @@
 	* 4.2. [**The Sarcina Registry**](#TheSarcinaRegistry)
 	* 4.3. [**Competitive Advantage**](#CompetitiveAdvantage)
 * 5. [Architecture, Security, and Privacy](#ArchitectureSecurityandPrivacy)
-* 6. [Machine Learning Use Cases for the Sarcina Analytic Environment](#MachineLearningUseCasesfortheSarcinaAnalyticEnvironment)
+* 6. [Data Analysis and Machine Learning Practices and Use Cases for the Sarcina Analytic Environment](#DataAnalysisandMachineLearningPracticesandUseCasesfortheSarcinaAnalyticEnvironment)
+	* 6.1. [Datasets available within the Analytic Environment](#DatasetsavailablewithintheAnalyticEnvironment)
+	* 6.2. [General approach](#Generalapproach)
+	* 6.3. [Use Case: Fraud Detection](#UseCase:FraudDetection)
+	* 6.4. [Use Case: Skills Model Improvement](#UseCase:SkillsModelImprovement)
+	* 6.5. [Use Case: Identification and Comparison of Expertise](#UseCase:IdentificationandComparisonofExpertise)
+	* 6.6. [Use Case: Factoring Price Outcomes](#UseCase:FactoringPriceOutcomes)
+	* 6.7. [Anti-Use Case: Recommender System](#Anti-UseCase:RecommenderSystem)
 * 7. [State of Development](#StateofDevelopment)
 
 <!-- vscode-markdown-toc-config
@@ -245,9 +252,9 @@ The Sarcina Registry will be a separate, non-immutable IC-based application wher
 
 > The Sarcina organization is not responsible for and does not encourage illicit or scandalous activity on their platform, and is not building that platform with the desires of such users in mind.
 
-##  6. <a name='MachineLearningUseCasesfortheSarcinaAnalyticEnvironment'></a>Data Analysis and Machine Learning Practices and Use Cases for the Sarcina Analytic Environment
+##  6. <a name='DataAnalysisandMachineLearningPracticesandUseCasesfortheSarcinaAnalyticEnvironment'></a>Data Analysis and Machine Learning Practices and Use Cases for the Sarcina Analytic Environment
 
-### Datasets available within the Analytic Environment
+###  6.1. <a name='DatasetsavailablewithintheAnalyticEnvironment'></a>Datasets available within the Analytic Environment
 1. Call records
 	1. Proxy user IDs for all parties to the call
 	1. Unmasked user IDs for certificate issuers involved in the call
@@ -266,7 +273,7 @@ The Sarcina Registry will be a separate, non-immutable IC-based application wher
 	1. Unconfirmed details of education, certification, or work experience
 	1. Confirmed details of education, certification, or work experience
 
-### General approach
+###  6.2. <a name='Generalapproach'></a>General approach
 Analysis of Sarcina's records will lean heavily on both conventional and machine learning approached to graph analysis of the relations between users. The aim will be to bootstrap meaningful attributes and taxonomies of activity from commonalities in patterns of communications, building off the seed of user provided data such as reported occupations and reported quality of service.
 
 Both supervised and unsupervised learning approaches will have a role to play in extracting the true variables and their relationships from this combination of attested but unreliable human-labeled structured data and unlabeled graph topology.
@@ -275,17 +282,30 @@ The aim of any ML model used on Sarcina data will be to bring forth some determi
 
 Instead, narrow models will be trained to predict outcomes or identify common factors and will then be interrogated, either by direct examination, combinatorial challenge batteries, or adversarial models in order to extract a compact description of the patterns the model has recognized. Only once such patterns can be described deterministically can it be determined whether the patterns triggering accurate model output represent legitimate insights about the domain under examination.
 
-### Use Case: Fraud Detection
+###  6.3. <a name='UseCase:FraudDetection'></a>Use Case: Fraud Detection
 Sarcina will work continuously to identify fraudulent users and low-quality service providers and to develop tools to algorithmically identify patterns indicating fraudulent behavior of users.
 
-Though Sarcina is not able to take direct action against fraudulent or incompetent users, it is important to identify such users and transactions in order to (1) exclude fraudulent transactions from the data sets used for other functions and (2) adjust the imputed trustworthiness of users engaging in suspicious behavior if those users also create Registry accounts (3) take steps to harden Sarcina's .
+Though Sarcina is not able to take direct action against fraudulent or incompetent users, it is important to identify such users and transactions in order to (1) exclude fraudulent transactions from the data sets used for other functions and (2) adjust the imputed trustworthiness of users engaging in suspicious behavior if those users also create Registry accounts (3) take steps to harden Sarcina's analysis chain against exploits.
 
+###  6.4. <a name='UseCase:SkillsModelImprovement'></a>Use Case: Skills Model Improvement
+Because data from the Sarcina App can not be tied to conventional credentials or legal identities, the model used to describe worker attributes will need to be bootstrapped from the call report data Sarcina receives. This will provide a unique opportunity to recapitulate the categorization of human expertise free from the incumbent institutional models.
 
+Seeding it's interface options with terms and categories drawn from existing models such as [O*Net](https://www.onetonline.org/), Sarcina will be able to observe directly which keywords, job titles, and other descriptors correlate to success and earnings in the market, which do not, which descriptors conflate functionally distinct factors, and which make distinctions which do no in fact exist.
 
-### Use Case: Skills Model Improvement
+###  6.5. <a name='UseCase:IdentificationandComparisonofExpertise'></a>Use Case: Identification and Comparison of Expertise
+An additional strategy will be to use graph analysis of users and their transactions to identify benchmark individuals claiming to practice a given occupation who are strongly connected to a network of individuals who claim the same or related occupations. Even without knowing the personal details or formal qualifications of such individuals, Sarcina will be able to develop confidence that such a person is a genuine and successful practitioner and thus use the pattern of their activity to assess the activities of others claiming to practice the same occupation.
 
-### Use Case: Identification and Comparison of Expertise
+It is hoped that sufficiently mature pattern-recognizing models based on this dataset will be able to perceive resonances between different fields and thus aid workers in identifying value-positive career changes which might suit their temperaments and abilities or suggest non-intuitive search terms to potential employers using the Registry. 
 
-### Use Case: Factoring Price Outcomes
+> **Note about the Registry Skills model:** In order to make a clear distinction between reported and imputed data, the Sarcina Registry uses a two-dimensional descriptor for user skills and attributes. The first dimension is magnitude - the level of experience reported to Sarcina by various channels. The second attribute is veracity - the level of confidence that the Registry has in the reported magnitude of the attribute. 
+
+###  6.6. <a name='UseCase:FactoringPriceOutcomes'></a>Use Case: Factoring Price Outcomes
+Having burnished it's empirical model of human capital factors, Sarcina will be in a position to identify the impact of attributes at various levels of magnitude on the volume and financial value of work obtained, both in isolation as as part of common patterns of qualification and network participation.
+
+###  6.7. <a name='Anti-UseCase:RecommenderSystem'></a>Anti-Use Case: Recommender System
+Sarcina does not intend to build a matching or recommender system to "assign" workers to jobs or to draw conclusions about who is or is not qualified for a particular task. Instead, the aim is to generate an easily manipulable palette of data visualization tools with which workers and employers can explore the space of productive work and human capital so that users can project their own intuitions and insights about their particular needs, abilities, and interests. Sarcina's belief is that by taking the element of authority out of the question of who ought to perform which work, greater insight will emerge from the organic feedback of rapid, low-friction hiring and dismissal.
 
 ##  7. <a name='StateofDevelopment'></a>State of Development
+Sarcina is currently in the process of developing it's initial public Sarcina App. The core service layer is complete, as is the primary structure and system integration of the Client Engine. 
+
+Sarcina is currently aiming for a Fall-Winter 2023 soft launch of a headless Engine and Core Service stack for use by whitelabel developers, with the full user-facing app to follow in 2024. 
